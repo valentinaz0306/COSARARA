@@ -1,0 +1,56 @@
+package main;
+
+public abstract class Figura {
+
+	private int posx;
+	private int posy;
+	private int velx;
+	private int vely;
+	private int tamano;
+	
+	public Figura(int px, int py) {
+
+		posx = px;
+		posy = py;
+		vely = 4;
+		tamano = 50;
+	}
+	// metodo moverse
+
+	public abstract void moverse();
+
+	public abstract void pintar();
+
+	public int getPosx() {
+		return posx;
+	}
+
+	public void setPosx(int posx) {
+		this.posx = posx;
+	}
+
+	public int getPosy() {
+		return posy;
+	}
+
+	public void setPosy(int posy) {
+		this.posy = posy;
+	}
+
+	public int getVelx() {
+		return velx;
+	}
+
+	public void setVelx(int velx) {
+		this.velx = velx;
+	}
+
+	public int getVely() {
+		return vely;
+	}
+
+	public void setVely(int vely) {
+		this.vely = vely;
+	}
+
+}

@@ -1,0 +1,90 @@
+package main;
+
+import java.util.ArrayList;
+
+import excepciones.BolasException;
+import processing.core.PApplet;
+
+public class Main extends PApplet {
+
+	// arraylist bolas
+	private ArrayList<Bola> figuras;
+	// contador
+	private int CANTIDAD_FIGURAS = 20;
+
+	public static void main(String[] args) {
+		PApplet.main("main.Main");
+		
+		probarExcepciones();
+	}
+
+	public void settings() {
+		size(800, 800);
+
+	}
+
+	public void setup() {
+
+		figuras = new ArrayList<Bola>();
+
+	}
+
+	public void draw() {
+		background(0);
+
+		for (int i = 0; i < figuras.size() - 1; i++) {
+
+			figuras.get(i).pintar();
+			new Thread(figuras.get(i)).start();
+
+		}
+
+	}// cierra draw
+
+	/*public void rebotar() {
+
+		for (int i = 0; i < figuras.size(); i++) {
+			Bola b = figuras.get(i);
+			for (int j = 0; j < figuras.size(); i++) {
+				if (i != j) {
+					double distanciaB = dist(b.getPosx(), b.getPosy(), figuras.get(j).getPosx(),
+							figuras.get(j).getPosy());
+					if (b.getR() + figuras.get(j).getR() <= distanciaB) {
+						if(b.getR()==figuras.get(j).getR()) {
+							
+							
+						}
+					}
+
+				}
+			}
+
+		}
+
+	}*/
+
+	public void mousePressed() {
+
+		for (int i = 0; i < CANTIDAD_FIGURAS; i++) {
+			Bola temp = new Bola(mouseX, mouseY, this);
+			figuras.add(temp);
+
+		}
+
+	}
+	
+	public static void probarExcepciones() {
+		//lanzar excepcion
+		
+		try{
+			throw new BolasException();
+			
+		} catch(BolasException e){
+		
+			System.out.println("mensaje 1");
+			
+		}
+		
+	}
+
+}// cierra main

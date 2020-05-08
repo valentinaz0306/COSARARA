@@ -1,0 +1,48 @@
+package main;
+
+import processing.core.PApplet;
+
+public class Bola implements Runnable {
+
+	private PApplet app;
+	private int posX;
+	private int posY;
+	private int tam;
+
+	public Bola(PApplet app) {
+		this.app = app;
+		posX = (int) app.random(0, 400);
+		posY = (int) app.random(0, 400);
+		tam = (int) app.random(50, 80);
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+		try {
+			
+			Thread.sleep(10);
+			mover();
+			
+		} catch (InterruptedException e) {
+
+			e.printStackTrace();
+		}
+				
+	}//cierra run
+	
+	public void dibujar() {
+		
+		app.ellipse(posX, posY, tam,tam);
+
+	}
+
+	public void mover() {
+
+		posX += app.random(-2, 2);
+		posY += app.random(-2, 2);
+
+	}
+
+}// cierra

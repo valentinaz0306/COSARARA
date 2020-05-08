@@ -1,0 +1,49 @@
+package main;
+
+import java.util.ArrayList;
+import processing.core.PApplet;
+
+public class Main extends PApplet {
+
+	// arraylist bolas
+	private ArrayList<Bola> figuras;
+	// contador
+	private int CANTIDAD_FIGURAS = 20;
+
+	public static void main(String[] args) {
+		PApplet.main("main.Main");
+	}
+
+	public void settings() {
+		size(800, 800);
+
+	}
+
+	public void setup() {
+
+		figuras = new ArrayList<Bola>();
+
+		for (int i = 0; i < CANTIDAD_FIGURAS; i++) {
+			Bola temp = new Bola(50,50,this);
+			figuras.add(temp);
+
+		}
+	}
+
+	public void draw() {
+		background(0);
+
+		for (int i = 0; i < figuras.size() - 1; i++) {
+
+			figuras.get(i).pintar();
+			new Thread(figuras.get(i)).start();
+		}
+
+	}// cierra draw
+
+	public void mousePressed() {
+		
+		
+	}
+
+}// cierra main

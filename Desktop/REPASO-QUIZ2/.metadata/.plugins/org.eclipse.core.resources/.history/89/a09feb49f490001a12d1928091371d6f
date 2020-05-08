@@ -1,0 +1,62 @@
+package main;
+
+import processing.core.PApplet;
+
+public class Bola extends Figura implements Runnable {
+
+	private PApplet app;
+	private int tam;
+	private float r;
+	private float g;
+	private float b;
+
+	public Bola(int px, int py, PApplet app) {
+		super(px, py);
+		this.app = app;
+		tam = (int) app.random(50, 80);
+		r = (float) app.random(0, 255);
+		g = (float) app.random(0, 255);
+		b = (float) app.random(0, 255);
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		moverse();
+		try {
+
+			Thread.sleep(3);
+
+		} catch (InterruptedException e) {
+
+			e.printStackTrace();
+		}
+
+	}// cierra run
+
+	public void pintar() {
+		app.fill(r, g, b);
+		app.ellipse(getPosx(),getPosy(),tam, tam);
+		
+
+	}
+
+	public void moverse() {
+
+		this.setPosy(this.getVely() + this.getPosy());
+		if (this.getPosy() >= 775 || this.getPosy() <= 25) {
+			this.setVely(this.getVely() * -1);
+		}
+		this.setPosx(this.getVelx() + this.getPosx());
+		if (this.getPosx() >= 775 || this.getPosx() <= 25) {
+			this.setVelx(this.getVelx() * -1);
+		}
+
+	}// moverse
+	
+	public double getR() {
+		return tam/2;
+		
+	}
+
+}// cierra
